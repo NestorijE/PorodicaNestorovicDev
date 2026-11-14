@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="theme-color" content="#b5582b">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Породица Несторовић - Придворица, Лепосавић</title>
+<style>
+:root{--g:#b5582b;--g2:#ffe9c7;--line:#e0a860;--bg:#fff8ec;--tx:#4a3426}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;-webkit-text-size-adjust:100%}
+nav{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,#b5582b,#d9822b);box-shadow:0 2px 10px #0003;display:flex;justify-content:center;gap:6px;padding:8px;padding-top:calc(8px + env(safe-area-inset-top))}
+nav a{color:#fff;text-decoration:none;padding:9px 12px;font-size:14px;font-weight:600;border-radius:22px;display:flex;align-items:center;gap:6px;white-space:nowrap;font-family:Georgia,"Times New Roman",serif;transition:background .2s,color .2s}
+nav a{flex-direction:column;gap:2px;padding:6px 10px;font-size:13px;line-height:1.2}
+nav a span{font-size:20px;line-height:1}
+nav a.on{background:#fff;color:var(--g);box-shadow:0 1px 4px #0003}
+nav a:active{background:#ffffff40}
+@media(min-width:480px){nav a{flex-direction:row;gap:6px;padding:9px 16px;font-size:16px;line-height:inherit}nav a span{font-size:inherit}}
+header{background:linear-gradient(160deg,#c8622c,#f0a93a);color:#fff;text-align:center;padding:48px 20px;border-bottom:4px solid #e0a860}
+header h1{margin:0 0 6px;font-size:clamp(26px,8vw,42px)}
+header p{margin:0;opacity:.9}
+header .top{font-size:14px;letter-spacing:.04em;margin-bottom:10px;opacity:.95}
+section{padding:28px 16px;max-width:900px;margin:auto}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif}
+h2{color:var(--g);text-align:center;margin:0 0 10px;font-size:clamp(22px,6vw,30px)}
+h3{color:var(--g);margin:18px 0 6px}
+.card{background:#fffdf6;border:1px solid #f3dcb0;border-radius:14px;padding:16px;box-shadow:0 1px 6px #0001}
+.card a{color:var(--g);font-weight:600;word-break:break-all}
+.bar{max-width:900px;margin:0 auto 10px;padding:0 16px;display:flex;flex-wrap:wrap;gap:8px}
+.bar button{background:var(--g);color:#fff;border:0;border-radius:18px;padding:6px 13px;font-size:13px;font-weight:600;font-family:inherit;cursor:pointer}
+.bar button:active{background:#954421}
+.bar #bc{background:#fff;color:var(--g);border:2px solid var(--g)}
+.bar #bc:active{background:var(--g2)}
+h2::after{content:"";display:block;width:64px;height:3px;background:#e0a860;margin:8px auto 0;border-radius:2px}
+.hint{text-align:center;font-size:14px;color:#6b7280;margin:0 0 10px}
+
+/* Stablo */
+#stablo{max-width:none;padding:28px 0}
+#stablo h2,#stablo .hint{padding:0 16px;max-width:900px;margin-left:auto;margin-right:auto}
+#wrap{position:relative;background:#fff;border-top:1px solid #d1d5db;border-bottom:1px solid #d1d5db}
+#vp{height:72vh;overflow:hidden;touch-action:pan-y;cursor:grab;position:relative}
+#vp.drag{cursor:grabbing}
+#wrap.full{position:fixed;inset:0;z-index:50;border:0}
+#wrap.full #vp{height:100%;touch-action:none}
+#cv{transform-origin:0 0;position:absolute;left:0;top:0;padding:12px;will-change:transform}
+.ctl{position:absolute;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:8px;z-index:5}
+.ctl button{width:46px;height:46px;border:0;border-radius:50%;background:var(--g);color:#fff;font-size:22px;box-shadow:0 2px 8px #0004;cursor:pointer}
+.ctl button:active{background:#954421}
+#cv .n{white-space:nowrap;background:var(--g2);color:#5a2d12;border:2px solid var(--g);border-radius:9px;padding:4px 9px;font-size:14px;font-weight:600;line-height:1.3}
+#cv .n.root{background:var(--g);color:#fff;font-size:16px}
+#cv .n.x{cursor:pointer}
+#cv .b{display:inline-block;margin-left:7px;min-width:20px;text-align:center;background:var(--g);color:#fff;border-radius:9px;font-size:12px;padding:0 5px}
+#cv .n.root .b{background:#fff;color:var(--g)}
+#cv li.c>ul{display:none}
+#cv .n.unk{opacity:.6;font-style:italic;border-style:dashed}
+#cv ul{list-style:none;margin:0;padding:0;position:relative}
+#cv li{position:relative}
+#cv li::before,#cv li::after,#cv ul::before{content:"";position:absolute}
+/* Хоризонтално (генерације слева удесно) */
+#cv.h ul{margin-left:14px}
+#cv.h>ul{margin:0}
+#cv.h ul::before{left:-14px;top:50%;width:14px;border-top:2px solid var(--line)}
+#cv.h>ul::before{display:none}
+#cv.h li{display:flex;align-items:center;padding:2px 0 2px 14px}
+#cv.h>ul>li{padding-left:0}
+#cv.h li::before{display:none}
+#cv.h li::after{left:0;top:0;bottom:0;border-left:2px solid var(--line)}
+#cv.h li:first-child::after{top:50%}#cv.h li:last-child::after{bottom:50%}
+#cv.h li:only-child::after,#cv.h>ul>li::after{display:none}
+#cv.h li li::before{display:block;left:0;top:50%;width:14px;border-top:2px solid var(--line)}
+/* Вертикално (генерације одозго надоле, деца у реду) */
+#cv.v ul{display:flex;justify-content:center;padding-top:16px}
+#cv.v>ul{padding-top:0}
+#cv.v ul::before{left:50%;top:0;height:16px;border-left:2px solid var(--line)}
+#cv.v>ul::before{display:none}
+#cv.v li{display:flex;flex-direction:column;align-items:center;padding:16px 3px 0}
+#cv.v>ul>li{padding-top:0}
+#cv.v li::before,#cv.v li::after{top:0;height:16px;width:50%;right:50%;border-top:2px solid var(--line)}
+#cv.v li::after{right:auto;left:50%;border-left:2px solid var(--line)}
+#cv.v li:last-child::before{border-right:2px solid var(--line);border-radius:0 6px 0 0}
+#cv.v li:first-child::after{border-radius:6px 0 0 0}
+#cv.v li:first-child::before,#cv.v li:last-child::after{border:0}
+#cv.v li:only-child::before{display:none}
+#cv.v li:only-child::after{border-top:0;border-radius:0}
+#cv.v>ul>li::before,#cv.v>ul>li::after{display:none}
+
+/* Галерија */
+.gal{display:grid;grid-template-columns:1fr;gap:16px}
+.gal figure{margin:0;border:1px solid #f3dcb0;background:#fffdf6;border-radius:14px;overflow:hidden;box-shadow:0 1px 6px #0001}
+.gal img{width:100%;height:auto;display:block}
+.gal figcaption{padding:10px 14px;font-size:14px;color:#6b4a35;font-style:italic;text-align:center;font-family:Georgia,serif}
+@media(min-width:600px){.gal{grid-template-columns:1fr 1fr}}
+.sub{text-align:center;margin:28px 0 12px;font-family:Georgia,"Times New Roman",serif}
+.gal.one{max-width:640px;margin:0 auto}
+.gal.m{display:block;column-count:1;column-gap:16px}
+.gal.m figure{break-inside:avoid;margin:0 0 16px}
+@media(min-width:600px){.gal.m{column-count:2}}
+.gal img{cursor:zoom-in}
+#lb{position:fixed;inset:0;z-index:60;background:#000d;display:flex;align-items:center;justify-content:center;padding:12px;cursor:zoom-out}
+#lb[hidden]{display:none}
+#lx{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:46px;height:46px;border:0;border-radius:50%;background:#fff;color:var(--g);font-size:22px;font-weight:700;box-shadow:0 2px 8px #0006;cursor:pointer}
+#lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px}
+footer{text-align:center;padding:24px 16px calc(24px + env(safe-area-inset-bottom));background:var(--g);color:#ffe9c7;font-size:14px}
+</style>
+</head>
+<body>
+<nav><a href="#pocetna" class="on"><span>🏠</span>Почетна</a><a href="#stablo"><span>🌳</span>Породично стабло</a><a href="#galerija"><span>🖼️</span>Галерија</a></nav>
+
+<header id="pocetna">
+  <p class="top">Република Србија • Аутономна Покрајина Косово и Метохија</p>
+  <h1>Породица Несторовић</h1>
+  <p>Село Придворица, Општина Лепосавић</p>
+</header>
+
+<section>
+  <div class="card">
+    <h3 style="margin-top:0">О породици</h3>
+    <p>Породица Несторовић населила је крајем 19. века село Придворица у општини Лепосавић, на северу Косова и Метохије. Кроз генерације смо чували традицију, крсну славу и породичне вредности наших предака.</p>
+    <h3>Сврха сајта</h3>
+    <p>Овај сајт је направљен као дигитални архив са циљем да сачува успомене, повеже све чланове наше породице и млађим генерацијама остави јасан траг о коренима и пореклу.</p>
+    <p>Отворени смо за сва питања и сугестије. Пишите аутору овог сајта на имејл адресу <a href="mailto:nikolanestorovic@hotmail.com">nikolanestorovic@hotmail.com</a></p>
+  </div>
+</section>
+
+<section id="stablo">
+  <h2>Породично стабло</h2>
+  <p class="hint">Додирните име да видите потомке. Дугмад + и − увећавају и умањују стабло, ⤢ приказује цело стабло, а ⌂ враћа на почетак (корен). За слободно померање додирните ⛶. Дугме ⇄ мења хоризонтални и вертикални приказ стабла.</p>
+  <div class="bar"><button id="bx">Прошири цело стабло</button><button id="bc">Скупи стабло</button></div>
+  <div id="wrap">
+    <div id="vp"><div id="cv" class="v"></div></div>
+    <div class="ctl">
+      <button id="bt" aria-label="Отвори или затвори све">⊞</button>
+      <button id="bo" aria-label="Промени распоред">⇄</button>
+      <button id="bf" aria-label="Цео екран">⛶</button>
+      <button id="bh" aria-label="Врати на почетак стабла">⌂</button>
+      <button id="bz" aria-label="Приказ целог стабла">⤢</button>
+      <button id="bp" aria-label="Увећај">+</button>
+      <button id="bm" aria-label="Умањи">−</button>
+    </div>
+  </div>
+</section>
+
+<section id="galerija">
+  <h2>Галерија слика</h2>
+  <p class="hint">Породичне фотографије и призори из села и околине.</p>
+    <h3 class="sub">Породично окупљање - Бадњи дан</h3>
+  <div class="gal m">
+    <figure><img loading="lazy" src="slike/badnjak-2024.jpg" alt="Породично окупљање - Бадњи дан 2024."><figcaption>Бадњи дан 2024.</figcaption></figure>
+    <figure><img loading="lazy" src="slike/badnjak-2023.jpg" alt="Породично окупљање - Бадњи дан 2023."><figcaption>Бадњи дан 2023.</figcaption></figure>
+    <figure><img loading="lazy" src="slike/badnjak-arhiva.jpg" alt="Породично окупљање - Бадњи дан"><figcaption>Бадњи дан</figcaption></figure>
+    <figure><img loading="lazy" src="slike/badnjak-1995.jpg" alt="Бадњи дан 1995/96."><figcaption>Бадњи дан 1995/96.</figcaption></figure>
+  </div>
+  <h3 class="sub">Панорама села и околине</h3>
+  <div class="gal one">
+    <figure><img loading="lazy" src="slike/panorama-socanica.jpg" alt="Панорама Сочаница 2008."><figcaption>Панорама Сочаница 2008.</figcaption></figure>
+  </div>
+  <div id="lb" hidden><button id="lx" aria-label="Затвори">✕</button><img alt=""></div>
+</section>
+
+<footer>© 2026 Породица Несторовић • Село Придворица, Општина Лепосавић</footer>
+
+<script>
+// [Име, деца...] — дете без потомака је обичан текст
+const T=['Нестор Шиљић',
+['Саватије','Гвозден',['Илија',['Миладин','Светомир',['Живан','Јелена','Стефан'],'Радојка','Иванка'],['Милоје',['Пуниша','Ђорђе','Милоје','Урош','Тајна']],'Саветка','Радосав','Танкосава','Лепосава','Милица'],'Стаменка'],
+['Војин',['Божидар','Владимир','Чедомир','Миодраг','Здравко','Будимир','Милунка','Владимирка'],'Нега','Станојла','Мара','Томка','Јелица'],
+['Цветко',['Вукмир',['Велимир','Мирјана','Драгана',['Цветко','Славица','Сања',['Александар','Сергеј','Давид','Нина']],['Сретко',['Иван','Лола','Дивна','Ђорђе'],'Милан',['Милош','Ђурђа']],['Љубиша','Никола','Наташа','Милена']],'Анђелија','Која'],['Тихомир',['Ђорђе','Зорица',['Горан','Ружица','Слободан',['Мирко','Касија','Антонина']]],'Живко',['Радосав','Данијела',['Дарко','Петар','Петра','Павле'],'Јован'],'Миљојка','Вулка','Борка','Радованка'],'Дара','Петкана'],
+['Арсеније',['Јован',['Василије',['Арсеније',['Јовица','Марија','Василије','Душан']]],'Нега','Пека'],['Стеван','Николета','Стојка'],['Тиодор',['Славко','Стојан','Непознато име 1','Непознато име 2'],['Милојица','Бранко'],'Горица']]];
+
+function badge(li){const b=li.querySelector(':scope>.n>.b');if(b)b.textContent=li.classList.contains('c')?'+'+li.querySelector(':scope>ul').children.length:'−';}
+function build(n,depth){
+  const name=typeof n==='string'?n:n[0], kids=typeof n==='string'?[]:n.slice(1);
+  const li=document.createElement('li'), d=document.createElement('div');
+  li.dataset.d=depth;
+  d.className='n'+(depth===0?' root':'')+(name.startsWith('Непознато')?' unk':'');
+  d.textContent=name; li.appendChild(d);
+  if(kids.length){
+    const ul=document.createElement('ul');kids.forEach(k=>ul.appendChild(build(k,depth+1)));li.appendChild(ul);
+    d.classList.add('x');const b=document.createElement('span');b.className='b';d.appendChild(b);
+    if(depth>=1)li.classList.add('c');badge(li);
+  }
+  return li;
+}
+function toggle(li){
+  if(!li.querySelector(':scope>ul'))return;
+  const n=li.firstChild,r0=n.getBoundingClientRect();
+  li.classList.toggle('c');badge(li);
+  const r1=n.getBoundingClientRect();x+=r0.left-r1.left;y+=r0.top-r1.top;apply();
+}
+const cv=document.getElementById('cv'),vp=document.getElementById('vp'),wrap=document.getElementById('wrap');
+const rootUl=document.createElement('ul');rootUl.appendChild(build(T,0));cv.appendChild(rootUl);
+
+let s=.8,x=0,y=0;const MIN=.2,MAX=3;
+function clamp(){const r=vp.getBoundingClientRect(),cw=cv.offsetWidth*s,ch=cv.offsetHeight*s,m=24,v=cv.classList.contains('v');
+  if(cw<=r.width)x=v?(r.width-cw)/2:8;else x=Math.min(m,Math.max(r.width-cw-m,x));
+  if(ch<=r.height)y=v?8:(r.height-ch)/2;else y=Math.min(m,Math.max(r.height-ch-m,y));}
+const apply=()=>{clamp();cv.style.transform=`translate(${x}px,${y}px) scale(${s})`;};
+function zoomAt(f,cx,cy){const ns=Math.min(MAX,Math.max(MIN,s*f));f=ns/s;x=cx-(cx-x)*f;y=cy-(cy-y)*f;s=ns;apply();}
+function center(){const r=vp.getBoundingClientRect();return[r.width/2,r.height/2];}
+function fit(){const w=cv.offsetWidth,h=cv.offsetHeight,r=vp.getBoundingClientRect();
+  s=Math.min(MAX,Math.max(MIN,Math.min(r.width/w,r.height/h)));x=(r.width-w*s)/2;y=(r.height-h*s)/2;apply();}
+function start(){const r=vp.getBoundingClientRect();s=.8;
+  if(cv.classList.contains('v')){x=r.width/2-cv.offsetWidth/2*s;y=8;}else{x=8;y=r.height/2-cv.offsetHeight*s/2;}apply();}
+
+const P=new Map();let last=0;
+let tap=null;
+vp.addEventListener('pointerdown',e=>{vp.setPointerCapture(e.pointerId);tap=P.size?null:{n:e.target.closest('.n'),x:e.clientX,y:e.clientY};P.set(e.pointerId,[e.clientX,e.clientY]);vp.classList.add('drag');last=0;});
+vp.addEventListener('pointermove',e=>{
+  if(!P.has(e.pointerId))return;
+  const o=P.get(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);
+  if(P.size===1){x+=e.clientX-o[0];y+=e.clientY-o[1];apply();}
+  else if(P.size===2){
+    const [a,b]=[...P.values()],dist=Math.hypot(a[0]-b[0],a[1]-b[1]);
+    const r=vp.getBoundingClientRect();
+    if(last)zoomAt(dist/last,(a[0]+b[0])/2-r.left,(a[1]+b[1])/2-r.top);
+    last=dist;
+  }
+});
+const up=e=>{const t=tap;P.delete(e.pointerId);last=0;if(!P.size)vp.classList.remove('drag');
+  if(e.type==='pointerup'&&t&&!P.size&&t.n&&Math.hypot(e.clientX-t.x,e.clientY-t.y)<8)toggle(t.n.parentNode);tap=null;};
+vp.addEventListener('pointerup',up);vp.addEventListener('pointercancel',up);
+vp.addEventListener('wheel',e=>{if(!e.ctrlKey&&!e.metaKey&&!wrap.classList.contains('full'))return;e.preventDefault();const r=vp.getBoundingClientRect();zoomAt(e.deltaY<0?1.12:.89,e.clientX-r.left,e.clientY-r.top);},{passive:false});
+document.getElementById('bp').onclick=()=>zoomAt(1.3,...center());
+document.getElementById('bm').onclick=()=>zoomAt(1/1.3,...center());
+document.getElementById('bz').onclick=fit;
+document.getElementById('bh').onclick=start;
+let allOpen=false;
+function setAll(open){allOpen=open;
+  cv.querySelectorAll('li').forEach(li=>{if(li.querySelector(':scope>ul')){li.classList.toggle('c',!open&&+li.dataset.d>=1);badge(li);}});
+  document.getElementById('bt').textContent=open?'⊟':'⊞';
+  open?fit():start();}
+document.getElementById('bt').onclick=()=>setAll(!allOpen);
+document.getElementById('bx').onclick=()=>setAll(true);
+document.getElementById('bc').onclick=()=>setAll(false);
+document.getElementById('bo').onclick=()=>{cv.classList.toggle('v');cv.classList.toggle('h');start();};
+document.getElementById('bf').onclick=()=>{wrap.classList.toggle('full');document.body.style.overflow=wrap.classList.contains('full')?'hidden':'';setTimeout(fit,50);};
+window.addEventListener('load',start);
+const lb=document.getElementById('lb');
+document.querySelectorAll('.gal img').forEach(i=>i.onclick=()=>{lb.querySelector("img").src=i.src;lb.hidden=false;});
+lb.onclick=()=>lb.hidden=true;
+addEventListener("keydown",e=>{if(e.key==="Escape")lb.hidden=true;});
+const links=[...document.querySelectorAll('nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+function mark(){let i=0;secs.forEach((e,k)=>{if(e.getBoundingClientRect().top<=110)i=k;});
+  if(innerHeight+scrollY>=document.body.scrollHeight-4)i=secs.length-1;
+  links.forEach((a,k)=>a.classList.toggle('on',k===i));}
+addEventListener('scroll',mark,{passive:true});mark();
+</script>
+</body>
+</html>
