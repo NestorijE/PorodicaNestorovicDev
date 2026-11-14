@@ -49,6 +49,12 @@ h2::after{content:"";display:block;width:64px;height:3px;background:#e0a860;marg
 .ctl button:active{background:#954421}
 #cv .n{white-space:nowrap;background:var(--g2);color:#5a2d12;border:2px solid var(--g);border-radius:9px;padding:4px 9px;font-size:14px;font-weight:600;line-height:1.3}
 #cv .n.root{background:var(--g);color:#fff;font-size:16px}
+#cv .n{display:grid;grid-template-columns:auto;column-gap:6px;align-items:center;justify-items:center;grid-template-areas:"t" "lv"}
+#cv .n.x{grid-template-columns:auto auto;grid-template-areas:"t b" "lv lv"}
+#cv .t{grid-area:t;justify-self:start}
+#cv .b{grid-area:b}
+#cv .lv{grid-area:lv;font-size:10px;font-weight:400;line-height:1.1;opacity:.65;margin-top:1px}
+#cv .n.root .lv{color:#ffe9c7;opacity:.85}
 #cv .n.x{cursor:pointer}
 #cv .b{display:inline-block;margin-left:7px;min-width:20px;text-align:center;background:var(--g);color:#fff;border-radius:9px;font-size:12px;padding:0 5px}
 #cv .n.root .b{background:#fff;color:var(--g)}
@@ -125,7 +131,7 @@ footer{text-align:center;padding:24px 16px calc(24px + env(safe-area-inset-botto
 
 <section id="stablo">
   <h2>Породично стабло</h2>
-  <p class="hint">Додирните име да видите потомке. Дугмад + и − увећавају и умањују стабло, ⤢ приказује цело стабло, а ⌂ враћа на почетак (корен). За слободно померање додирните ⛶. Дугме ⇄ мења хоризонтални и вертикални приказ стабла.</p>
+  <p class="hint">Додирните име да видите потомке. Дугмад + и − увећавају и умањују стабло, ⤢ приказује цело стабло, а ⌂ враћа на почетак (корен). За слободно померање додирните ⛶. Дугме ⇄ мења хоризонтални и вертикални приказ стабла. Испод имена пише колено (Нестор Шиљић је 1. колено).</p>
   <div class="bar"><button id="bx">Прошири цело стабло</button><button id="bc">Скупи стабло</button></div>
   <div id="wrap">
     <div id="vp"><div id="cv" class="v"></div></div>
@@ -163,10 +169,10 @@ footer{text-align:center;padding:24px 16px calc(24px + env(safe-area-inset-botto
 <script>
 // [Име, деца...] — дете без потомака је обичан текст
 const T=['Нестор Шиљић',
-['Саватије','Гвозден',['Илија',['Миладин','Светомир',['Живан','Јелена','Стефан'],'Радојка','Иванка'],['Милоје',['Пуниша','Ђорђе','Милоје','Урош','Тајна']],'Саветка','Радосав','Танкосава','Лепосава','Милица'],'Стаменка'],
-['Војин',['Божидар','Владимир','Чедомир','Миодраг','Здравко','Будимир','Милунка','Владимирка'],'Нега','Станојла','Мара','Томка','Јелица'],
+['Саватије','Гвозден',['Илија',['Миладин','Светомир',['Живан','Јелена','Стефан'],'Радојка','Иванка'],['Милоје',['Пуниша','Ђорђе','Милоје','Урош','Тајна'],'Бранка','Латинка'],'Саветка','Радосава','Танкосава','Лепосава','Милица'],'Стаменка'],
+['Војин',['Божидар',['Владимир','Славица','Драгица','Драган'],['Чедомир',['Вучина','Бојан','Бојана'],['Вукомир','Снежана','Ивана'],'Љубица','Станимирка','Живана','Вукена'],['Миодраг','Саша','Жарко'],['Здравко','Милан','Тања'],['Будимир','Весна','Владан'],'Милунка','Владимирка'],'Нега','Станојла','Мара','Томка','Јелица'],
 ['Цветко',['Вукмир',['Велимир','Мирјана','Драгана',['Цветко','Славица','Сања',['Александар','Сергеј','Давид','Нина']],['Сретко',['Иван','Лола','Дивна','Ђорђе'],'Милан',['Милош','Ђурђа']],['Љубиша','Никола','Наташа','Милена']],'Анђелија','Која'],['Тихомир',['Ђорђе','Зорица',['Горан','Ружица','Слободан',['Мирко','Касија','Антонина']]],'Живко',['Радосав','Данијела',['Дарко','Петар','Петра','Павле'],'Јован'],'Миљојка','Вулка','Борка','Радованка'],'Дара','Петкана'],
-['Арсеније',['Јован',['Василије',['Арсеније',['Јовица','Марија','Василије','Душан']]],'Нега','Пека'],['Стеван','Николета','Стојка'],['Тиодор',['Славко','Стојан','Непознато име 1','Непознато име 2'],['Милојица','Бранко'],'Горица']]];
+['Арсеније',['Јован',['Василије',['Арсеније',['Јовица','Марија','Василије','Душан'],'Горица','Светлана','Биљана']],'Нега','Пека'],['Стеван','Николета','Стојка'],['Тиодор',['Славко','Стојан','Непознато име 1','Непознато име 2'],['Милојица','Бранко'],'Горица']]];
 
 function badge(li){const b=li.querySelector(':scope>.n>.b');if(b)b.textContent=li.classList.contains('c')?'+'+li.querySelector(':scope>ul').children.length:'−';}
 function build(n,depth){
@@ -174,7 +180,7 @@ function build(n,depth){
   const li=document.createElement('li'), d=document.createElement('div');
   li.dataset.d=depth;
   d.className='n'+(depth===0?' root':'')+(name.startsWith('Непознато')?' unk':'');
-  d.textContent=name; li.appendChild(d);
+  const t=document.createElement('span');t.className='t';t.textContent=name;const lv=document.createElement('span');lv.className='lv';lv.textContent=(depth+1)+'. колено';d.append(t,lv);li.appendChild(d);
   if(kids.length){
     const ul=document.createElement('ul');kids.forEach(k=>ul.appendChild(build(k,depth+1)));li.appendChild(ul);
     d.classList.add('x');const b=document.createElement('span');b.className='b';d.appendChild(b);
